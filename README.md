@@ -56,3 +56,7 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   Resolution: 3840x2160
         `:+ssssssssssssssssss+:`           GPU: NVIDIA GeForce RTX 3080 Lite Hash Rat
             .-/+oossssoo+/-.               Memory: 12706MiB / 31954MiB
 ```
+
+## Credits
+
+-   Improved on this: <https://youtu.be/_Im4_3Z1NxQ>

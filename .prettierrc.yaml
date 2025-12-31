@@ -1,6 +1,6 @@
 tabWidth: 4
 useTabs: true
 semi: false
-trailingComma: "all"
+trailingComma: 'all'
 singleQuote: true
 jsxSingleQuote: true

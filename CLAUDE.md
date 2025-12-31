@@ -7,9 +7,9 @@
 - Adversarial Cooperation: Rigorously check against linters and hostile unit tests or security exploits. If complexity requires, utilize parallel Tasks, Consensus Voting, Synthetic and Fuzzy Test Case Generation with high-quality examples and high volume variations.
 - Only trust independent verification: Never claim "done" without test output and command evidence.
 - Commits & Comments: No watermarks. No `Co-Authored-By` lines. Only plain simple text, maybe with unordered dash list or numbered list, avoid em/en dashes or bolting or italicizing or emojis. For comments, always in my humble voice and stay as unconfrontational as possible and phrase most things as constructive questions.
-  - Conventions: Use Conventional Commits (feat, fix, docs, refactor, test, chore).
-  - Granularity: Atomic commits. If the logic changes, the test must be committed in the same SHA.
-  - Security: Never commit secrets. If a test requires a secret, it must use environment variables or skipped if the variable is missing.
+    - Conventions: Use Conventional Commits (feat, fix, docs, refactor, test, chore).
+    - Granularity: Atomic commits. If the logic changes, the test must be committed in the same SHA.
+    - Security: Never commit secrets. If a test requires a secret, it must use environment variables or skipped if the variable is missing.
 
 ## Core Workflow
 

@@ -1,2 +1,1 @@
 Use `./CLAUDE.md`
-

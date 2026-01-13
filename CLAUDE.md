@@ -7,9 +7,9 @@
 - Adversarial Cooperation: Rigorously check against linters and hostile unit tests or security exploits. If complexity requires, utilize parallel Tasks, Consensus Voting, Synthetic and Fuzzy Test Case Generation with high-quality examples and high volume variations.
 - Only trust independent verification: Never claim "done" without test output and command evidence. Make sure there are no regressions whatsoever. We need strong foundations and rock-solid iterations.
 - Commits & Comments: No watermarks. No `Co-Authored-By` lines. Only plain simple text, maybe with unordered dash list or numbered list, avoid em/en dashes or bolting or italicizing or emojis. For comments, always in my humble voice and stay as unconfrontational as possible and phrase most things as constructive questions.
-    - Conventions: Use Conventional Commits (feat, fix, docs, refactor, test, chore).
-    - Granularity: Atomic commits. If the logic changes, the test must be committed in the same SHA.
-    - Security: Never commit secrets. If a test requires a secret, it must use environment variables or skipped if the variable is missing.
+  - Conventions: Use Conventional Commits (feat, fix, docs, refactor, test, chore).
+  - Granularity: Atomic commits. If the logic changes, the test must be committed in the same SHA.
+  - Security: Never commit secrets. If a test requires a secret, it must use environment variables or skipped if the variable is missing.
 
 ## Core Workflow
 
@@ -36,6 +36,34 @@ If you cannot write acceptance criteria, pause and clarify.
 - ZRead MCP: Use for documentation search, repository structure exploration, and code reading on GitHub.
 - GitHub CLI: Use `gh` for PR/Issue operations.
 - Offline Docs: Use `go doc` or `x --help` or `man x` or equivalences for accurate command references.
+
+### Research Before Implementation
+
+Before writing any code, always verify current best practices. Never rely on training data for API syntax, library versions, or installation commands.
+
+1. **Latest Documentation**: Use Context7 MCP to get up-to-date library docs
+   - First: Use `mcp__plugin_context7_context7__resolve-library-id` to find the library
+   - Then: Use `mcp__plugin_context7_context7__query-docs` to get specific info
+
+2. **Web Search**: Use `mcp__web-search-prime__webSearchPrime` for:
+   - Latest library versions and syntax
+   - Breaking changes in recent releases
+   - Current best practices (patterns change over time)
+
+3. **Web Reader**: Use `mcp__web_reader__webReader` for:
+   - Reading official documentation pages
+   - Checking GitHub repositories for examples
+   - Fetching specific documentation URLs
+
+4. **ZRead**: Use `mcp__zread__*` tools for:
+   - Searching GitHub repositories
+   - Reading repository documentation
+   - Exploring codebases
+
+5. **GitHub CLI**: Use `gh` for:
+   - Searching issues and PRs
+   - Reading repository files
+   - Checking latest releases
 
 ### Verification Minimum
 
@@ -85,6 +113,42 @@ For simple typo fixes, comment updates, or one-line non-logic changes:
 1. Skip the "Requirements Contract."
 2. Run the linter/formatter only.
 3. Commit immediately.
+
+## Testing Strategy
+
+### Property-Based Testing vs Unit Tests
+
+Choose the appropriate testing approach based on what you are validating.
+
+**Use Unit Tests for**:
+
+- Business logic with specific input/output pairs
+- Edge cases and boundary conditions
+- Error handling paths
+- Individual function behavior
+
+**Use Property-Based Testing for**:
+
+- Invariants that should hold for ANY valid input
+- Commutativity, associativity, idempotency properties
+- Round-trip serialization/deserialization
+- State transitions in state machines
+
+**Examples**:
+
+Property-based (QuickCheck/propcheck style):
+
+- "For any list, reversing twice returns the original"
+- "For any valid JSON string, parse → stringify → parse yields the same value"
+- "For any two numbers a, b: add(a, b) == add(b, a)"
+
+Unit test:
+
+- "Given empty list, return error"
+- "Given user ID 123, return User object with name='John'"
+- "Given negative input, throw ValueError"
+
+When implementing features with complex invariants, prefer property-based tests with hundreds of auto-generated cases over manually written unit tests.
 
 ## Beware Language Specific Pitfalls
 
